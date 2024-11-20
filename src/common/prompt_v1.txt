@@ -1,0 +1,49 @@
+Organize teams for the strategy game **"Foundry Battle"**, a one-hour competition between two alliances. The goal is to capture and hold buildings on the map to accumulate **Arsenal points**. Each alliance aims to score more **alliance Arsenal points** than the opponent by the end of the battle. Players also earn **personal Arsenal points** for individual rankings and rewards.
+
+**Game Objects, Priorities, and Points per Control:**
+
+1. **Imperial Foundry**:
+   - **First Control**: 9000 alliance points, 4500 personal points
+   - **Ongoing Control**: +1800 alliance points/min, +900 personal points/min
+2. **Prototype Sites 1 & 2**:
+   - **First Control**: 6000 alliance points, 3000 personal points
+   - **Ongoing Control**: +1200 alliance points/min, +600 personal points/min
+3. **Repair Facilities 1–4**:
+   - **First Control**: 3000 alliance points, 1500 personal points
+   - **Ongoing Control**: +600 alliance points/min, +300 personal points/min
+4. **Munitions Warehouse** (Bonus: +15% troop damage, -15% damage received):
+   - **First Control**: 1200 alliance points, 600 personal points
+   - **Ongoing Control**: +240 alliance points/min, +120 personal points/min
+5. **Mercenary Camp, Transit Station, Boiler Room** (each with unique bonuses):
+   - **First Control**: 1200 alliance points, 600 personal points
+   - **Ongoing Control**: +240 alliance points/min, +120 personal points/min
+
+**Task:**
+
+You'll receive a list of players in such format:
+  - Player name | Furnace level | Power points 
+  - **Example**: Raymond Lead | 30 | 47,860,000
+
+1. **Select 11 Strongest Players as Team Leaders**: Assign the top 11 players by power points to lead each of the 11 objects, with the strongest leading the highest-priority object.
+2. **Form Teams for Each Object Using Remaining Players**: Create teams of **1-3 members** per object, ensuring:
+   - **Leaders and Members are Unique**: Each player can only participate in one team !!!
+3. **Balance Team Sizes**: Distribute players evenly so each team has 1-3 members per object.
+
+**Response Format (Strict):**
+
+### Imperial Foundry:
+- 🚩 **Team Leader**: [Player Name]
+- 👥 **Members**: [Player 1], [Player 2]
+
+### Prototype Site 1:
+- 🚩 **Team Leader**: [Player Name]
+- 👥 **Members**: [Player 1], [Player 2]
+
+...Continue for each object
+
+Write only the formatted team setup, without any extra explanations or introductory statements, and avoid using code blocks !!!
+
+---
+
+Below is the player list:
+

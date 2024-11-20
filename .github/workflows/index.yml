@@ -1,0 +1,55 @@
+name: Build and deploy Docker app to Azure
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env: 
+  REGISTRY: docker.io
+  IMAGE_NAME: raymond7510/fhm-automation
+  DOCKERHUB_USERNAME: raymond7510
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-docker-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-docker-
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@3
+        with: 
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_AUTH_TOKEN }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@4
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with: 
+          app-name: fhm-automation
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest

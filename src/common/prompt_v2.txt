@@ -1,0 +1,54 @@
+Organize teams for the strategy game **"Foundry Battle"**, a one-hour competition between two alliances. The goal is to capture and hold buildings on the map to accumulate **Arsenal points**. Each alliance aims to score more **alliance Arsenal points** than the opponent by the end of the battle. Players also earn **personal Arsenal points** for individual rankings and rewards.  
+
+**Game Objects, Priorities, and Points per Control:**  
+1. **Prototype Site 1, Prototype Site 2**:
+   - **First Control**: 6000 alliance points, 3000 personal points
+   - **Ongoing Control**: +1200 alliance points/min, +600 personal points/min
+2. **Repair Facility 1, Repair Facility 2, Repair Facility 3, Repair Facility 4**:
+   - **First Control**: 3000 alliance points, 1500 personal points
+   - **Ongoing Control**: +600 alliance points/min, +300 personal points/min
+3. **Munitions Warehouse** (Bonus: +15% troop damage, -15% troop damage received):
+   - **First Control**: 1200 alliance points, 600 personal points
+   - **Ongoing Control**: +240 alliance points/min, +120 personal points/min
+4. **Mercenary Camp**:
+   - **First Control**: 1200 alliance points, 600 personal points
+   - **Ongoing Control**: +240 alliance points/min, +120 personal points/min
+5. **Transit Station** (Bonus: -50% teleport cooldown):
+   - **First Control**: 1200 alliance points, 600 personal points
+   - **Ongoing Control**: +240 alliance points/min, +120 personal points/min
+6. **Boiler Room** (Bonus: -50% control time required):
+   - **First Control**: 1200 alliance points, 600 personal points
+   - **Ongoing Control**: +240 alliance points/min, +120 personal points/min
+
+### **Task:**  
+You will receive a list of players in the format:  
+`Player Name | Furnace Level | Power Points`  
+**Example**: `Raymond Lead | 30 | 50,300,000`  
+
+**Steps:**  
+1. **Select Team Leaders (10 strongest players):** Assign the strongest players as team leaders based on their Power Points. 
+   - Assign the strongest leader to **Prototype Site 1**, the second strongest to **Prototype Site 2**, and so on, following the priority of objects.
+2. **Form Unique Teams:** Assign members to each leader from the remaining players.  
+   - Ensure **leaders and members are unique**: Each player can only be assigned to one object.  
+   - Ensure **teams are balanced** so no single team is overly strong or weak. Avoid concentrating all strong players in a single team.
+   - Each team should have **1–3 members**, excluding the leader.
+
+### **Response Format (Strict):**  
+
+### Prototype Site 1:  
+- 🚩 **Team Leader**: [Player Name]  
+- 👥 **Members**: [Player 1], [Player 2]  
+
+### Prototype Site 2:  
+- 🚩 **Team Leader**: [Player Name]  
+- 👥 **Members**: [Player 1], [Player 2]  
+
+...Continue for each object.  
+
+### **Important Rules:**  
+1. Do not assign any player to more than one object (leader or member).  
+2. Create **exactly one team per object**. Avoid duplicate objects or teams.  
+3. Ensure teams are balanced.
+4. Respond in the exact format provided above without any extra comments or explanations and avoid using code blocks !  
+
+Below is the player list:  
