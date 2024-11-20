@@ -88,9 +88,12 @@ export class FoundryService {
         const notionBlocks = await this.buildNotionBlocks(fullTemplate)
         await this.notionService.writeContent(lastBattle.results[0].id, notionBlocks)
 
-        const rootChannelId = this.configService.get('DISCORD_ROOT_CHANNEL_ID')
+        /* ------------------------------------
+            Sending created teams to Discord 
+           ------------------------------------ */
+        /* const rootChannelId = this.configService.get('DISCORD_ROOT_CHANNEL_ID')
         await this.discordService.sendMessage(legion1Template, rootChannelId)
-        await this.discordService.sendMessage(legion2Template, rootChannelId)
+        await this.discordService.sendMessage(legion2Template, rootChannelId) */
 
         const castBattlePage = lastBattle.results[0] as PageObjectResponse
         return { url: castBattlePage.url }
